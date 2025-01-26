@@ -1,0 +1,16 @@
+<div class="bg-primaryColor py-8 sm:py-10 mt-10">
+    <div class="mx-auto max-w-7xl py-10 md:py-16 px-6 md:px-8">
+      <dl class="grid grid-cols-1 gap-x-8 gap-y-12 text-center mdx:grid-cols-2 md:grid-cols-4">
+        @for (stat of stats; track $index) {
+        <div class="mx-auto flex flex-col gap-y-4">
+          <dt class="text-lg text-white tracking-wide">{{ stat.key }}</dt>
+          <dd
+            class="order-first text-4xl font-semibold tracking-tight text-white sm:text-5xl"
+          >
+            {{ stat.value }}
+          </dd>
+        </div>
+        }
+      </dl>
+    </div>
+  </div>

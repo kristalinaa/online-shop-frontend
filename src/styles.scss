@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body,
+html {
+    @apply font-montserrat;
+    scroll-behavior: smooth;
+}
+
+a {
+    color: theme('colors.primaryColor');
+}
+
+* {
+    scrollbar-width: thin;
+    /* Firefox */
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    /* Edge */
+    scrollbar-color: #9ca3af #f3f4f6;
+    /* Thumb and track colors */
+    // scrollbar-gutter: stable;
+    /* Ensures consistent gutter spacing */
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 9999px;
+    /* Fully rounded track edges */
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 9999px;
+    /* Fully rounded thumb edges */
+    background-color: #9ca3af;
+    /* Gray color for thumb */
+}
+
+::-webkit-scrollbar {
+    background-color: #f3f4f6; /* Light gray color for track */
+    border-radius: 9999px; /* Rounded edges for the track */
+  }

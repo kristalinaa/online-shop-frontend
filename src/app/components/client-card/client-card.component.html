@@ -1,0 +1,40 @@
+<div
+  class="h-fit aspect-auto p-6 border border-gray-200 rounded-lg bg-white shadow-xl shadow-gray-600/10"
+>
+  <div class="flex gap-4">
+    <div class="flex flex-row gap-2">
+      <div class="size-16 min-w-16 min-h-16 rounded-lg overflow-hidden">
+        <img
+          [src]="client.photo"
+          [title]="client.name"
+          [alt]="client.name"
+          width="64"
+          height="64"
+          class="size-16 min-w-16 min-h-16 object-cover"
+        />
+      </div>
+      <div class="flex flex-col">
+        <span class="text-greenPrimary font-medium">{{ client.name }}</span>
+        <p class="text-sm text-gray-600">
+          {{ client.position }}, {{ client.company.name }}
+        </p>
+        <span class="flex flex-row">
+          @for(i of generateArray(client.stars); track i) {
+          <svg-icon
+            [svgClass]="'size-5 text-yellow-300'"
+            src="assets/icons/outline/star.svg"
+          ></svg-icon>
+          }
+        </span>
+      </div>
+    </div>
+  </div>
+  <p class="mt-8 text-gray-800">{{ client.feedback }}</p>
+  <div class="w-32 mt-8">
+    <img
+      [src]="client.company.photo"
+      [title]="client.company.name"
+      [alt]="client.company.name"
+    />
+  </div>
+</div>
