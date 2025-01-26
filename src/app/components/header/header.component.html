@@ -1,4 +1,4 @@
-<header class="bg-white">
+<header class="bg-[#D2B1D2]">
     <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
       <div class="flex lg:flex-1">
         <a href="#" class="-m-1.5 p-1.5">
@@ -17,13 +17,14 @@
       <div class="hidden lg:flex lg:gap-x-12">
        
   
-        <a href="#" class="text-sm/6 font-semibold text-gray-900">Home</a>
+        <a [routerLink]="'marketplace'"  class="text-sm/6 font-semibold text-gray-900">Home</a>
         <a href="#" class="text-sm/6 font-semibold text-gray-900">Features</a>
         <a href="#" class="text-sm/6 font-semibold text-gray-900">Marketplace</a>
         <a href="#" class="text-sm/6 font-semibold text-gray-900">Company</a>
       </div>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-        <a href="#" class="text-sm/6 font-semibold text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>
+        <button *ngIf="!isUserLoggedIn"  [routerLink]="'auth/login'" class="text-sm/6 font-semibold text-gray-900">Log in <span aria-hidden="true">&rarr;</span></button>
+        <button *ngIf="isUserLoggedIn"  (click)="signOut()" class="text-sm/6 font-semibold text-gray-900">Sign out</button>
       </div>
     </nav>
     <!-- Mobile menu, show/hide based on menu open state. -->
@@ -54,7 +55,7 @@
               <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Company</a>
             </div>
             <div class="py-6">
-              <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Log in</a>
+              <a [routerLink]="'auth/login'" class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Log in</a>
             </div>
           </div>
         </div>
