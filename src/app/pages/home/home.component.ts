@@ -1,23 +1,27 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { CommonModule, NgIf } from '@angular/common';
-import { CardComponent } from '../../components/card/card.component';
-import { HeaderComponent } from '../../components/header/header.component';
-import { FooterComponent } from '../../components/footer/footer.component';
-import { FirstSectionComponent } from "../../components/first-section/first-section.component";
-import { ClientsSayAboutComponent } from "../../components/clients-say-about/clients-say-about.component";
-import { TalkWithAgentComponent } from "../../components/talk-with-agent/talk-with-agent.component";
-import { StatsComponent } from "../../components/stats/stats.component";
+import { CommonModule } from '@angular/common';
+import { FirstSectionComponent } from '../../components/first-section/first-section.component';
+import { ClientsSayAboutComponent } from '../../components/clients-say-about/clients-say-about.component';
+import { TalkWithAgentComponent } from '../../components/talk-with-agent/talk-with-agent.component';
+import { StatsComponent } from '../../components/stats/stats.component';
+import { CollectionComponent } from '../../components/collection/collection.component';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, HeaderComponent, FooterComponent, FirstSectionComponent, ClientsSayAboutComponent, TalkWithAgentComponent, StatsComponent],
+  imports: [
+    CommonModule,
+    FirstSectionComponent,
+    ClientsSayAboutComponent,
+    TalkWithAgentComponent,
+    StatsComponent,
+    CollectionComponent,
+  ],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit, OnDestroy {
-
   ctaSection: any = {
     title:
       'We are on a mission to embrace a culture of speaking up in organizations all over the world',
@@ -30,7 +34,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     photo: 'assets/case-2.jpeg',
     photoPosition: 'right',
   };
-
 
   agent: any = {
     label: 'thomas-agent',
@@ -62,25 +65,18 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   isUserLoggedIn: boolean = false;
   constructor(private router: Router, private authService: AuthService) {
-    this.isUserLoggedIn = this.authService.loggedInUser() != null
-    
-  } 
-
-
-  ngOnInit(): void {
+    this.isUserLoggedIn = this.authService.loggedInUser() != null;
   }
-  
-  navigateToAnotherPage() { 
-    
-    this.router.navigate(['/auth/login']); 
-  } 
 
+  ngOnInit(): void {}
 
-  signOut(){
+  navigateToAnotherPage() {
+    this.router.navigate(['/auth/login']);
+  }
+
+  signOut() {
     this.authService.signOutUser();
-    window.location.reload()
+    window.location.reload();
   }
-  ngOnDestroy(): void {
-  }
+  ngOnDestroy(): void {}
 }
-
