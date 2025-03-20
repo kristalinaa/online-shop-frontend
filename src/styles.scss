@@ -1,41 +1,231 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-body,
-html {
-    @apply font-montserrat;
-    scroll-behavior: smooth;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import "mapbox-gl/dist/mapbox-gl.css";
+
+img {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-touch-callout: none;
 }
 
-a {
-    color: theme('colors.primaryColor');
+.mat-mdc-text-field-wrapper {
+  border-radius: 0.5rem !important;
+  --mdc-filled-text-field-active-indicator-height: 0px !important;
+  background-color: rgb(255, 255, 255) !important;
+  --mdc-filled-text-field-focus-active-indicator-height: 0px !important;
 }
 
-* {
-    scrollbar-width: thin;
-    /* Firefox */
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-    /* Edge */
-    scrollbar-color: #9ca3af #f3f4f6;
-    /* Thumb and track colors */
-    // scrollbar-gutter: stable;
-    /* Ensures consistent gutter spacing */
+.mat-mdc-form-field-focus-overlay {
+  background-color: white !important;
+  border: 1px solid theme("colors.primaryColor") !important;
+  border-radius: 6px !important;
 }
 
-::-webkit-scrollbar-track {
-    border-radius: 9999px;
-    /* Fully rounded track edges */
+.mat-mdc-form-field .mat-mdc-form-field-focus-overlay {
+  opacity: 0.06 !important;
 }
 
-::-webkit-scrollbar-thumb {
-    border-radius: 9999px;
-    /* Fully rounded thumb edges */
-    background-color: #9ca3af;
-    /* Gray color for thumb */
+input:where(:not([type])):focus {
+  --tw-ring-color: transparent;
+}
+
+.mat-mdc-form-field.mat-focused .mat-mdc-form-field-focus-overlay {
+  opacity: 1 !important;
+}
+
+.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field
+  .mdc-notched-outline__notch {
+  border-right: unset;
+}
+
+// ngx-dropzone {
+// 	width: 3rem !important;
+// 	height: 3rem !important;
+// }
+
+[type="text"]:focus,
+[type="email"]:focus,
+[type="url"]:focus,
+[type="password"]:focus,
+[type="number"]:focus,
+[type="date"]:focus,
+[type="datetime-local"]:focus,
+[type="month"]:focus,
+[type="search"]:focus,
+[type="tel"]:focus,
+[type="time"]:focus,
+[type="week"]:focus,
+[multiple]:focus,
+textarea:focus,
+select:focus {
+  box-shadow: none !important;
+}
+
+@layer base {
+  [type="text"],
+  [type="email"],
+  [type="url"],
+  [type="password"],
+  [type="number"],
+  [type="date"],
+  [type="datetime-local"],
+  [type="month"],
+  [type="search"],
+  [type="tel"],
+  [type="time"],
+  [type="week"],
+  [multiple],
+  textarea,
+  select {
+    @apply w-full rounded-md border border-gray-300 px-3 py-3 text-xs placeholder-gray-400 focus:z-10 focus:border-bluePrimary focus:outline-none focus:ring-bluePrimary dark:border-night-500 dark:bg-night-700 dark:text-night-400 dark:placeholder-night-200;
+  }
+
+  [type="checkbox"],
+  [type="radio"] {
+    @apply h-4 w-4 rounded border-gray-300 bg-gray-100 text-green-500 focus:ring-2 focus:ring-green-500 dark:border-night-600 dark:bg-night-700 dark:ring-offset-night-800 dark:focus:ring-green-600;
+  }
+}
+
+@layer components {
+  .dropdown-content {
+    @apply pointer-events-none scale-95 opacity-0 duration-100 ease-in;
+  }
+
+  .dropdown:hover > .dropdown-content {
+    @apply pointer-events-auto block scale-100 animate-fade-in-up opacity-100 duration-200;
+  }
+}
+
+/** Scroll bar **/
+@supports selector(::-webkit-scrollbar) {
+  .supports-scrollbars\: pr-2 {
+    padding-right: 0.5rem;
+  }
+}
+
+.centered-svg {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+html,
+body {
+  height: 100vh;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  font-size: 0.875rem; //14px
+}
+
+.is__invalid-input {
+  border-color: #e11d48;
+}
+
+.is__invalid-error {
+  color: #e11d48;
+  @apply px-1 pt-1 text-sm;
+}
+
+.scrollbar-gutter {
+  scrollbar-gutter: stable;
+}
+
+.scrollbar-opacity::-webkit-scrollbar {
+  width: 0px;
+  height: 3px;
+}
+
+.scrollbar-opacity::-webkit-scrollbar-track {
+  -webkit-box-shadow: none;
+}
+
+.scrollbar-opacity::-webkit-scrollbar-thumb {
+  background: white;
+  -webkit-box-shadow: none;
+}
+
+.scrollbar-opacity::-webkit-scrollbar-thumb:hover {
+  height: 2px;
+}
+
+.scrollbar-opacity::-webkit-scrollbar-thumb:window-inactive {
+  background: none;
+}
+
+.scrollbar-opacity-filter::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+
+.scrollbar-opacity-filter::-webkit-scrollbar-track {
+  background: rgba(241, 241, 241, 0.542);
+}
+
+/* Handle */
+
+.scrollbar-opacity-filter::-webkit-scrollbar-thumb {
+  background: #dddddd;
+}
+
+/* Change the scrollbar thumb color on hover */
+.scrollbar-opacity-filter::-webkit-scrollbar-thumb:hover {
+  background: rgb(134, 134, 134);
+}
+
+.scrollbar-opacity-filter::-webkit-scrollbar-thumb:window-inactive {
+  background: none;
+}
+
+.scrollbar-opacity::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+
+.scrollbar-opacity::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0);
+}
+
+/* Handle */
+
+.scrollbar-opacity::-webkit-scrollbar-thumb {
+  background: #dddddd;
+}
+
+/* Change the scrollbar thumb color on hover */
+.scrollbar-opacity::-webkit-scrollbar-thumb:hover {
+  background: rgb(134, 134, 134);
+}
+
+.scrollbar-opacity::-webkit-scrollbar-thumb:window-inactive {
+  background: none;
 }
 
 ::-webkit-scrollbar {
-    background-color: #f3f4f6; /* Light gray color for track */
-    border-radius: 9999px; /* Rounded edges for the track */
-  }
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #acacac;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #767676;
+}
