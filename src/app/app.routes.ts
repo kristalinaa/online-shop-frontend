@@ -19,6 +19,11 @@ export const routes: Routes = [
       import('./modules/company/company.module').then((m) => m.CompanyModule),
   },
   {
+    path: 'account',
+    loadChildren: () =>
+      import('./modules/account/account.module').then((m) => m.AccountModule),
+  },
+  {
     path: 'marketplace',
     component: MarketplaceComponent,
   },

@@ -1,0 +1,114 @@
+<div class="mt-20">
+  <div class="my-8 flex flex-col gap-4">
+    <div class="flex flex-row items-center">
+      <a class="text-xl font-medium text-gray-600 no-underline hover:underline" [routerLink]="['/account']">Account</a>
+      <div class="mx-3">
+        <svg
+          viewBox="0 0 18 18"
+          role="presentation"
+          aria-hidden="true"
+          focusable="false"
+          style="height: 10px; width: 10px; fill: #767676">
+          <path
+            d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z"
+            fill-rule="evenodd"></path>
+        </svg>
+      </div>
+      <div class="text-xl font-medium text-gray-600">Login & Security</div>
+    </div>
+    <div class="hidden text-5xl font-semibold sm:block">Login & Security</div>
+  </div>
+  <div class="xs:flex-row flex w-full flex-col justify-between sm:flex-row md:flex-row">
+    <div class="w-full sm:w-1/2 md:w-7/12">
+      <div class="flex w-full flex-col">
+        <div class="border-b">
+          <button class="border-b border-primaryColor pb-3 pt-8 text-xl font-semibold text-primaryColor">Login</button>
+        </div>
+        <div class="flex w-full flex-col">
+          <div class="pt-8 text-xl font-semibold">Login</div>
+          <div class="flex w-full flex-row justify-between border-b border-neutral-300">
+            <div class="flex flex-col gap-2 py-8">
+              <div class="text-lg font-medium">Password</div>
+              <div *ngIf="loginSecurityInfo?.passwordUpdateDate" class="text-gray-500">
+                Last updated {{ loginSecurityInfo.passwordUpdateDate | date : 'medium' }}
+              </div>
+            </div>
+
+            <a
+              [routerLink]="['/auth/change-password']"
+              class="flex-start flex justify-end py-8 text-xl font-medium text-cyan-700">
+              Update
+            </a>
+          </div>
+          <div></div>
+        </div>
+      </div>
+
+      <div class="flex w-full flex-col">
+        <div class="pt-8 text-xl font-semibold">Social Accounts</div>
+
+        <div class="w-100 flex flex-row justify-between border-b border-neutral-300">
+          <div class="flex flex-col gap-2 py-8">
+            <div class="text-lg font-medium">Google</div>
+            <div *ngIf="loginSecurityInfo?.isRegisteredWithGoogle" class="text-gray-500">Connected</div>
+            <div *ngIf="!loginSecurityInfo?.isRegisteredWithGoogle" class="text-gray-500">Not connected</div>
+          </div>
+
+          <button
+            *ngIf="loginSecurityInfo?.isRegisteredWithGoogle"
+            class="flex-start flex justify-end py-8 text-xl font-medium text-cyan-700">
+            Disconnect
+          </button>
+        </div>
+        <div></div>
+      </div>
+
+      <div class="flex w-full flex-col">
+        <div class="pt-8 text-xl font-semibold">Login History</div>
+
+        <div class="w-100 flex flex-row justify-between border-b border-neutral-300">
+          <div class="flex flex-col gap-2 pt-8">
+            <!-- <div class="font-medium text-lg"> Android 6.0 · Chrome Mobile </div> -->
+            <!-- <div class="text-gray-500"> Tirana, Tirana · September 14, 2022 at 10:03 </div> -->
+            <div class="text-gray-500">Last login {{ loginSecurityInfo?.lastLoginDate | date : 'medium' }}</div>
+          </div>
+
+          <!-- <button class="flex flex-start justify-end font-medium text-cyan-700 text-xl py-8"> Log out Device</button> -->
+        </div>
+        <div></div>
+      </div>
+    </div>
+
+    <div class="mt-1 flex h-fit w-full flex-col gap-2 border border-neutral-300 p-8 sm:w-5/12 md:w-1/3">
+      <svg
+        viewBox="0 0 32 32"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        role="presentation"
+        focusable="false"
+        style="display: block; height: 32px; width: 32px; fill: currentcolor">
+        <path
+          d="M16 .798l.555.37C20.398 3.73 24.208 5 28 5h1v12.5C29 25.574 23.21 31 16 31S3 25.574 3 17.5V5h1c3.792 0 7.602-1.27 11.445-3.832L16 .798zm-1 3.005c-3.2 1.866-6.418 2.92-9.648 3.149L5 6.972V17.5c0 6.558 4.347 10.991 10 11.459zm2 0V28.96c5.654-.468 10-4.901 10-11.459V6.972l-.352-.02c-3.23-.23-6.448-1.282-9.647-3.148z"></path>
+      </svg>
+      <div class="my-8 text-2xl font-semibold">Lets make your account more secure</div>
+      <div>
+        We’re always working on ways to increase safety in our community. That’s why we look at every account to make
+        sure it’s as secure as possible.
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="w-full flex flex-col">
+        <div class="text-xl py-8 font-semibold"> Account </div>
+
+        <div class="w-100 flex flex-row justify-between border-neutral-300 border-b">
+            <div class="flex flex-col gap-2">
+                <div class="mb-6 text-gray-500"> Deactivate your account </div>
+            </div>
+
+            <button class="flex flex-start text-xl text-red-500 hover:text-cyan-700"> Deactivate </button>
+        </div>
+        <div>
+        </div>
+    </div> -->
+</div>
