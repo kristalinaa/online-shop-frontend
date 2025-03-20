@@ -1,1 +1,39 @@
-<router-outlet></router-outlet>
+<div class="w-screen overflow-y-auto h-screen">
+  <div class="flex min-h-screen h-fit w-full">
+    <div class="hidden flex-1 items-center justify-center bg-white lg:flex">
+      <div
+        class="flex flex-col items-center justify-center max-w-2xl space-y-6 p-8 text-center"
+      >
+        <img
+          class="mb-5"
+          src="./assets/icons/logo_bondcom_black.png"
+          width="250"
+          alt="Bondcom"
+        />
+        <h1 class="text-4xl font-bold">Fast, Efficient and Productive</h1>
+        <p class="text-md font-light">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis
+          <span class="cursor-pointer font-medium text-bluePrimary"
+            >nostrud</span
+          >
+          exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          <span class="cursor-pointer font-medium text-bluePrimary"
+            >consequat.</span
+          >
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+          dolore eu fugiat nulla pariatur.
+        </p>
+      </div>
+    </div>
+    <div
+      class="flex flex-1 items-center justify-center bg-white dark:bg-night-700"
+    >
+      <!-- Route -->
+      <div class="h-fit relative sm:w-[500px] w-full max-w-[85%]">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
