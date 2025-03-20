@@ -3,10 +3,11 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { NgIf } from '@angular/common';
 import { BannerComponent } from '../banner/banner.component';
+import { ProfileMenuComponent } from '../profile-menu/profile-menu.component';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, NgIf, BannerComponent],
+  imports: [RouterLink, NgIf , BannerComponent, ProfileMenuComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })

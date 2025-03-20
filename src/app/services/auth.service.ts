@@ -9,7 +9,7 @@ export class AuthService {
 
   localStorageKey:string = 'user-shop';
   constructor(private http: HttpClient) { }
-
+  user: any;
   
   registerUser(user:any) {
     const headers = new HttpHeaders().append('Content-Type', 'application/json');
@@ -24,6 +24,7 @@ export class AuthService {
   }
 
   saveUserToLocalStorag(userObject: any){
+    this.user = userObject;
     window.localStorage.setItem(this.localStorageKey, JSON.stringify(userObject));
     
   }
@@ -39,6 +40,13 @@ export class AuthService {
       return JSON.parse(userInLocalStorage)
     }
     return null
+  }
+
+  isRole(role: string){
+
+    const user = this.loggedInUser()
+
+    return user?.roles.includes(role)
   }
   
 }

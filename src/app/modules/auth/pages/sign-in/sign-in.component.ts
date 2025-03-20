@@ -36,7 +36,7 @@ export class SignInComponent {
     console.log(this.loginForm.value);
     this.authService.loginUser(this.loginForm.value).subscribe({
       next: (response: any) => {
-        this.authService.saveUserToLocalStorag({email: response.email, token: response.token})
+        this.authService.saveUserToLocalStorag({email: response.email, token: response.token, roles: response.roles})
         this.router.navigate([''])
       },
       error: (error) => {
