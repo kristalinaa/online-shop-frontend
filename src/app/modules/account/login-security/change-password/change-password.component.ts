@@ -20,7 +20,7 @@ import { StrongPasswordRegx } from '../../../../interface/password-regexp';
 @Component({
   selector: 'app-change-password',
   standalone: true,
-  imports: [NgIf, CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [ CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './change-password.component.html',
   styleUrl: './change-password.component.scss',
 })
