@@ -3,7 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CreateProductComponent } from './create-product/create-product.component';
 import { CompanyComponent } from './company.component';
-
+import { CompanyProductsComponent } from './company-products/company-products.component';
+import { SingleProductComponent } from './single-product/single-product.component';
+''
 
 const routes: Routes = [
   {
@@ -12,7 +14,10 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'create-product', component: CreateProductComponent, canActivate: [] },
-    //   { path: 'history-routes', component: MyHistoryRouteComponent, canActivate: [AuthGuardService] },
+
+      { path: 'products', component: CompanyProductsComponent, canActivate: [] },
+      { path: 'single-product/:id', component: SingleProductComponent, canActivate: [] },
+      //   { path: 'history-routes', component: MyHistoryRouteComponent, canActivate: [AuthGuardService] },
     //   { path: 'active-routes', component: MyActiveRouteComponent, canActivate: [AuthGuardService] },
     //   { path: 'notification', component: NotificationComponent, canActivate: [AuthGuardService] },
 

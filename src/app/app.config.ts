@@ -2,10 +2,11 @@ import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { provideHttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptors, withInterceptorsFromDi } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
 import { provideAngularSvgIcon } from 'angular-svg-icon';
+import { AuthInterceptor } from './interceptor/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
   
@@ -14,5 +15,8 @@ export const appConfig: ApplicationConfig = {
       positionClass: 'toast-bottom-center',
 
     }),
+    provideHttpClient(withInterceptorsFromDi()), // Support DI-based interceptors
+
+    {provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor, multi: true},
   provideAngularSvgIcon()]
 };

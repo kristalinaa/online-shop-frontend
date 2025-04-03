@@ -7,6 +7,12 @@
             Enter all the details for the product including price, quantity , product name also upload a clear photo.
         </p>
 
+        <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
+        <select (change)="onSelectCategory($event)"  id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          <option selected>Choose a category</option>
+          <option *ngFor="let item of categories"  [value]="item.id">{{item.name}}</option>
+        
+        </select>
         <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
           <div class="sm:col-span-6">
             <label class="">Product name</label>
@@ -42,12 +48,57 @@
               />
             </div>
           </div>
+
+          <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+            <div class="sm:col-span-6">
+              <label class="">Size</label>
+              <div class="relative mt-2">
+                <input
+                [required]="true"
+                  formControlName="size"
+                  placeholder="Size"
+                  class="peer w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+            <div class="sm:col-span-6">
+
+              <mat-form-field>
+                <mat-label>Colors</mat-label>
+                <mat-select multiple="multiple" formControlName="color" id="colors"
+                class="peer w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow">
+                <mat-option [disabled]="true">Choose a Color</mat-option>
+                    <mat-option *ngFor="let item of colorOptions"  [value]="item"  [style.background-color]="item"
+                    >
+                       {{item}}
+                    </mat-option>
+                  
+                </mat-select>
+              </mat-form-field>
+              
+             
+            </div>
+          </div>
           <div class="sm:col-span-6">
             <label>Description</label>
             <div class="relative w-full min-w-[200px] mt-2">
               <textarea
                 placeholder="Enter description"
                 formControlName="description"
+                class="peer h-full min-h-[100px] w-full resize-none rounded-[7px] border border-slate-200 rounded-md bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:resize-none disabled:border-0 disabled:bg-blue-gray-50"
+                placeholder=" "
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="sm:col-span-6">
+            <label>Details</label>
+            <div class="relative w-full min-w-[200px] mt-2">
+              <textarea
+                placeholder="Enter details"
+                formControlName="details"
                 class="peer h-full min-h-[100px] w-full resize-none rounded-[7px] border border-slate-200 rounded-md bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:resize-none disabled:border-0 disabled:bg-blue-gray-50"
                 placeholder=" "
               ></textarea>

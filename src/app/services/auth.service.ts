@@ -53,6 +53,14 @@ export class AuthService {
     return null;
   }
 
+  access_token() {
+    let userInLocalStorage = window.localStorage.getItem(this.localStorageKey);
+    if (userInLocalStorage) {
+      return JSON.parse(userInLocalStorage).token;
+    }
+    return null;
+  }
+
   /**
    * Forgot password
    *
