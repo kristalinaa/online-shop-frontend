@@ -1,0 +1,7 @@
+<div class="category-browser">
+    <h2 class="text-xl font-semibold mb-4">Categories</h2>
+    <app-category-node
+      *ngFor="let category of categories"
+      [category]="category"
+    ></app-category-node>
+  </div>

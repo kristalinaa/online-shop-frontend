@@ -43,6 +43,15 @@ export class ProductService {
   }
 
 
+  getListProductsPerCategory(params: any): Observable<any> {
+    const response: any = this._httpClient.get(
+      this.url + `/product/list-per-category`, this._getHttpOptions(params)
+        );
+
+    return response;
+  }
+
+
   getProductDetails(id: number): Observable<any> {
     const response: any = this._httpClient.get(
       this.url + `/product/${id}`
@@ -51,6 +60,15 @@ export class ProductService {
     return response;
   }
 
+
+  
+  getRootCategories(): Observable<any[]> {
+    const response: any = this._httpClient.get(
+      this.url + `/category/roots`
+    );
+
+    return response;
+  }
   getCategories(): Observable<any[]> {
     const response: any = this._httpClient.get(
       this.url + `/category`
@@ -75,7 +93,17 @@ export class ProductService {
 
     return response;
   }
- 
+
+
+  
+
+  getProductsByCategory(category: string): Observable<any[]> {
+    const response: any = this._httpClient.get(
+      this.url + `/product/category/${category}`
+        );
+
+    return response;
+  }
 
 
 

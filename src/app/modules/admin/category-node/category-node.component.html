@@ -1,0 +1,40 @@
+<div class="border border-gray-200 dark:border-gray-700 rounded-xl mb-2 overflow-hidden">
+    <button
+      type="button"
+      (click)="toggle()"
+      class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-700 dark:text-gray-200 bg-white hover:bg-blue-50 dark:bg-gray-800 dark:hover:bg-gray-700 transition"
+    >
+      <span>{{ category.name }}</span>
+  
+      <div class="flex items-center gap-2">
+        <!-- Action Buttons -->
+        <button (click)="onAdd(category)" class="text-blue-600 hover:text-blue-800 text-sm">Add</button>
+        <button (click)="onEdit(category)" class="text-yellow-600 hover:text-yellow-800 text-sm">Edit</button>
+        <button (click)="onDelete(category)" class="text-red-600 hover:text-red-800 text-sm">Delete</button>
+  
+        <!-- Arrow Icon -->
+        <svg
+          [ngClass]="{ 'rotate-180': isOpen }"
+          class="w-4 h-4 transition-transform"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </div>
+    </button>
+  
+    <div *ngIf="isOpen" class="p-4 bg-gray-50 dark:bg-gray-900 text-sm text-gray-600 dark:text-gray-300">
+        <ng-container *ngIf="category.children?.length > 0; else noChildren">
+            <app-category-node
+              *ngFor="let child of category.children"
+              [category]="child">
+            </app-category-node>
+          </ng-container>
+          <ng-template #noChildren>
+            <p class="text-sm text-gray-400 italic">No subcategories</p>
+          </ng-template>
+    </div>
+  </div>
+  

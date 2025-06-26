@@ -3,3 +3,6 @@ export interface Condition {
   regex: string;
   description: string;
 }
+
+
+

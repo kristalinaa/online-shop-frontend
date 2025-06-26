@@ -1,0 +1,10 @@
+.chart-container {
+    position: relative;
+    width: 100%;
+    height: 60px; /* You can also set a specific height like 400px if needed */
+  }
+  
+  canvas {
+    width: 100% !important;
+    height: 50% !important;
+  }

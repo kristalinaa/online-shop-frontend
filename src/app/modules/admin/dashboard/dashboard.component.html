@@ -1,0 +1,123 @@
+<div class="grid grid-cols-3 gap-4 mb-4">
+  <div
+    class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96"
+  >
+    <div class="p-6">
+      <div class="mb-2 flex items-center justify-between">
+        <p class="text-slate-800 text-xl font-semibold">Total users</p>
+        <p class="text-cyan-600 text-xl font-semibold">
+          {{ stats.counts.users || 0 }}
+        </p>
+      </div>
+
+      <button
+        (click)="goTo('all')"
+        class="rounded-md w-full mt-6 bg-cyan-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-cyan-700 focus:shadow-none active:bg-cyan-700 hover:bg-cyan-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+        type="button"
+      >
+        View
+      </button>
+    </div>
+  </div>
+  <div
+    class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96"
+  >
+    <div class="p-6">
+      <div class="mb-2 flex items-center justify-between">
+        <p class="text-slate-800 text-xl font-semibold">Companies</p>
+        <p class="text-cyan-600 text-xl font-semibold">
+          {{ stats.counts.companies || 0 }}
+        </p>
+      </div>
+
+      <button
+        (click)="goTo('company')"
+        class="rounded-md w-full mt-6 bg-cyan-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-cyan-700 focus:shadow-none active:bg-cyan-700 hover:bg-cyan-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+        type="button"
+      >
+        View
+      </button>
+    </div>
+  </div>
+  <div
+    class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96"
+  >
+    <div class="p-6">
+      <div class="mb-2 flex items-center justify-between">
+        <p class="text-slate-800 text-xl font-semibold">Clients</p>
+        <p class="text-cyan-600 text-xl font-semibold">
+          {{ stats.counts.clients || 0 }}
+        </p>
+      </div>
+
+      <button
+        (click)="goTo('person')"
+        class="rounded-md w-full mt-6 bg-cyan-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-cyan-700 focus:shadow-none active:bg-cyan-700 hover:bg-cyan-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+        type="button"
+      >
+        View
+      </button>
+    </div>
+  </div>
+</div>
+
+<div
+  class="mb-4 rounded-sm bg-gray-50 dark:bg-gray-800 grid grid-cols-2"
+>
+<app-product-chart [monthlyData]="stats.monthlyProductCount"></app-product-chart>
+
+<div class="grid grid-cols-1 gap-4">
+    <div
+    class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg"
+  >
+    <div class="p-6">
+      <div class="mb-2 flex items-center justify-between">
+        <p class="text-slate-800 text-xl font-semibold">Total products</p>
+        <p class="text-cyan-600 text-xl font-semibold">
+          {{ stats.counts.products || 0 }}
+        </p>
+      </div>
+
+      <button
+        (click)="goToProducts()"
+        class="rounded-md w-full mt-6 bg-cyan-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-cyan-700 focus:shadow-none active:bg-cyan-700 hover:bg-cyan-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+        type="button"
+      >
+        View
+      </button>
+    </div>
+  </div>
+  <div
+  class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg"
+>
+  <div class="p-6">
+    <div class="mb-2 flex items-center justify-between">
+      <p class="text-slate-800 text-xl font-semibold">Total categories</p>
+      <p class="text-cyan-600 text-xl font-semibold">
+        {{ stats.counts.categories || 0 }}
+      </p>
+    </div>
+
+    <button
+      (click)="goToCategories()"
+      class="rounded-md w-full mt-6 bg-cyan-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-cyan-700 focus:shadow-none active:bg-cyan-700 hover:bg-cyan-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+      type="button"
+    >
+      View
+    </button>
+  </div>
+</div>
+  
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

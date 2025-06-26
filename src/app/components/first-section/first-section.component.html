@@ -1,4 +1,4 @@
-<div class="bg-white overflow-hidden">
+<div class="bg-linear-to-t from-sky-500 to-indigo-500  overflow-hidden">
     <div class="mx-auto max-w-7xl py-10 md:py-16 px-6 md:px-8">
       @if(ctaSection.mainTitle) {
       <div class="flex flex-col max-w-4xl w-full mx-auto items-center justify-center">
@@ -13,7 +13,7 @@
           ctaSection.photoPosition === 'right' ? 'flex-row' : 'flex-row-reverse'
         ">
         <div class="max-w-xl text-left">
-          <h2 class="text-balance flex flex-col text-2xl sm:text-3xl font-semibold tracking-tight text-gray-800">
+          <h2 class="text-balance flex flex-col text-2xl sm:text-4xl font-bold tracking-tight text-[#DC6BAD]">
             <span>{{
               ctaSection.title
               }}</span>
@@ -27,7 +27,7 @@
           <div class="mt-10 flex items-center gap-x-6 justify-start">
             @if(ctaSection.button) {
             <button [routerLink]="ctaSection.button.href"
-              class="bg-lightBluePrimary border-2 hover:border-primaryColor font-bold border-lightBluePrimary text-primaryColor whitespace-nowrap rounded-lg px-6 py-2 cursor-pointer flex flex-row gap-2 justify-between items-center transition-all">
+              class="bg-[#DC6BAD] border-2 hover:border-primaryColor font-bold border-lightBluePrimary text-primaryColor whitespace-nowrap rounded-lg px-6 py-3 cursor-pointer flex flex-row gap-2 text-md justify-between items-center transition-all">
               {{ ctaSection.button.label }}
             </button>
   

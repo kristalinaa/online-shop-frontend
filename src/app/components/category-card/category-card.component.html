@@ -1,8 +1,9 @@
-<div
-  class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700"
+<div (click)="navigateToCategory()"
+[class]="colors[index]"
+  class="w-full p-6  border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 cursor-pointer hover:scale-105"
 >
   <svg
-    class="w-7 h-7 text-gray-500 dark:text-gray-400 mb-3"
+    class="w-7 h-7 text-white font-bold dark:text-gray-400 mb-3"
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="currentColor"
@@ -14,13 +15,10 @@
   </svg>
   <a href="#">
     <h5
-      class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"
+      class="mb-2 text-2xl font-semibold tracking-tight  dark:text-white"
     >
-      Need a help in Claim?
+      {{category.name}}
     </h5>
   </a>
-  <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">
-    Go to this step by step guideline process on how to certify for your weekly
-    benefits:
-  </p>
+  
 </div>

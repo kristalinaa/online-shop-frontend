@@ -5,17 +5,21 @@ import { CreateProductComponent } from './create-product/create-product.componen
 import { CompanyComponent } from './company.component';
 import { CompanyProductsComponent } from './company-products/company-products.component';
 import { SingleProductComponent } from './single-product/single-product.component';
+import { AuthGuard } from '../../auth.guard';
+import { CheckoutListComponent } from '../client/checkout-list/checkout-list.component';
 ''
 
 const routes: Routes = [
-  {
+{
     path: '',
     component: CompanyComponent,
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'create-product', component: CreateProductComponent, canActivate: [] },
 
-      { path: 'products', component: CompanyProductsComponent, canActivate: [] },
+      { path: 'checkout-list', component: CheckoutListComponent, canActivate: [AuthGuard] },
+
+      { path: 'products', component: CompanyProductsComponent, canActivate: [AuthGuard] },
       { path: 'single-product/:id', component: SingleProductComponent, canActivate: [] },
       //   { path: 'history-routes', component: MyHistoryRouteComponent, canActivate: [AuthGuardService] },
     //   { path: 'active-routes', component: MyActiveRouteComponent, canActivate: [AuthGuardService] },

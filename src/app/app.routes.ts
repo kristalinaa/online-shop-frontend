@@ -1,6 +1,9 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { MarketplaceComponent } from './pages/marketplace/marketplace.component';
+import { ProductListComponent } from './pages/product-list/product-list.component';
+import { CheckoutProductsComponent } from './pages/checkout-products/checkout-products.component';
+import { AuthGuard } from './auth.guard';
 
 export const routes: Routes = [
   {
@@ -19,6 +22,18 @@ export const routes: Routes = [
       import('./modules/company/company.module').then((m) => m.CompanyModule),
   },
   {
+    path: 'client',
+    loadChildren: () =>
+      import('./modules/client/client.module').then((m) => m.ClientModule),
+  },
+
+  {
+    path: 'admin',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./modules/admin/admin.module').then((m) => m.AdminModule),
+  },
+  {
     path: 'account',
     loadChildren: () =>
       import('./modules/account/account.module').then((m) => m.AccountModule),
@@ -26,5 +41,13 @@ export const routes: Routes = [
   {
     path: 'marketplace',
     component: MarketplaceComponent,
+  },
+  {
+    path: 'checkout-products/:id',
+    component: CheckoutProductsComponent,
+  },
+  {
+    path: 'product-list',
+    component: ProductListComponent,
   },
 ];

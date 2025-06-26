@@ -1,42 +1,24 @@
-<div      [routerLink]="['/company/single-product',product.id]"
+<div *ngIf="product" class=" shadow-md rounded overflow-hidden group p-6">
+  <a [routerLink]="['/company/single-product', product.id]">
+    <img
+      [src]="getImage()"
+      alt="Product image"
+      class="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80"
+    />
+  </a>
 
-class="bg-white shadow rounded overflow-hidden group">
-    <div class="relative">
-        <img [src]="getImage()"  alt="product 1" class="w-full">
-        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
-        justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
-            <a href="#"
-                class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
-                title="view product">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </a>
-            <a href="#"
-                class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
-                title="add to wishlist">
-                <i class="fa-solid fa-heart"></i>
-            </a>
-        </div>
-    </div>
-    <div class="pt-4 pb-3 px-4">
-        <a href="#">
-            <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">
-                {{product.productName}}</h4>
+  <div class="mt-4 flex justify-between">
+    <div>
+      <h3 class="text-sm text-gray-700">
+        <a [routerLink]="['/company/single-product', product.id]">
+          {{ product.productName }}
         </a>
-        <div class="flex items-baseline mb-1 space-x-2">
-            <p class="text-xl text-primary font-semibold">${{product.price}}</p>
-        </div>
-        <div class="flex items-center">
-            <div class="flex gap-1 text-sm text-yellow-400">
-                <span><i class="fa-solid fa-star"></i></span>
-                <span><i class="fa-solid fa-star"></i></span>
-                <span><i class="fa-solid fa-star"></i></span>
-                <span><i class="fa-solid fa-star"></i></span>
-                <span><i class="fa-solid fa-star"></i></span>
-            </div>
-            <div class="text-xs text-gray-500 ml-3">({{product.quantity}})</div>
-        </div>
+        <p class="mt-1 text-sm text-gray-500">{{ product.color }}</p>
+      </h3>
     </div>
-    <a href="#"
-        class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
-        to cart</a>
+    <p class="text-md font-medium text-gray-900">${{ product.price }}</p>
+  </div>
+  <div>
+    <p class="mt-1 text-sm text-gray-500">{{ product.category?.name }}</p>
+  </div>
 </div>

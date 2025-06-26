@@ -28,16 +28,14 @@ export class SignInComponent {
   }
 
   onSubmit() {
-    // if(!this.loginForm.valid){
-    //      console.log("this.log", this.loginForm);
-          
-    //   return
-    // }
+   
     console.log(this.loginForm.value);
     this.authService.loginUser(this.loginForm.value).subscribe({
       next: (response: any) => {
         this.authService.saveUserToLocalStorag({email: response.email, token: response.token, roles: response.roles})
         this.router.navigate([''])
+        window.location.href = ''
+        
       },
       error: (error) => {
         //manage error if happens

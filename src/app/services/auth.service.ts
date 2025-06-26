@@ -42,7 +42,7 @@ export class AuthService {
 
   signOutUser() {
     window.localStorage.removeItem(this.localStorageKey);
-    window.location.reload();
+    window.location.href = '';
   }
 
   loggedInUser() {

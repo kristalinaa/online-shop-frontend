@@ -15,6 +15,11 @@ export class HeaderComponent {
   isUserLoggedIn: boolean = false;
   constructor(private router: Router, private authService: AuthService) {
     this.isUserLoggedIn = this.authService.loggedInUser() != null;
+
+  }
+
+  isRole(role: string){
+    return this.authService.isRole(role)
   }
 
   signOut() {
