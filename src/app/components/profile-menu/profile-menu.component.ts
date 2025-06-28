@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { NgClass, NgIf } from '@angular/common';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { ClickOutsideDirective } from '../../directives/click-outside.directive';
@@ -25,7 +25,7 @@ export class ProfileMenuComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -47,5 +47,9 @@ export class ProfileMenuComponent implements OnInit {
 
   signOut() {
     this.authService.signOutUser();
+  }
+
+  goToNotifications(){
+    this.router.navigate(['/notifications']);
   }
 }

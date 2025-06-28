@@ -2,7 +2,8 @@
   <!-- Profile Button -->
   <div class="flex flex-row items-center justify-center gap-7">
     <button
-      class="group relative rounded-lg border border-transparent bg-orangeLight p-2 transition-all hover:border-gray-100"
+    (click)="goToNotifications()"
+      class="group relative rounded-lg border border-transparent p-2 transition-all hover:border-gray-100"
       type="button"
       aria-expanded="false"
       aria-haspopup="true"
@@ -30,7 +31,7 @@
       <span class="sr-only">Open user menu</span>
       <div class="flex flex-row items-center gap-2 justify-center">
         <div
-          class=" bg-orangeLight flex h-10 min-h-10 w-10 min-w-10 items-center justify-center rounded-lg shadow"
+          class=" flex h-10 min-h-10 w-10 min-w-10 items-center justify-center rounded-lg shadow"
         >
           <svg-icon
             src="/assets/icons/outline/user.svg"

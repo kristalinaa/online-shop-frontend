@@ -1,21 +1,39 @@
-
-
 <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-   
+
     <div class="flex flex-col items-center p-4">
-        <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-3.jpg" alt="Bonnie image"/>
+        <img class="w-24 h-24 mb-3 rounded-full shadow-lg"
+            src="https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-3.jpg" alt="Bonnie image" />
         <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{{user.firstName}} {{user.lastName}}</h5>
-        <p *ngIf="user.userRoles && user.userRoles.length > 0" class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+        <p *ngIf="user.userRoles && user.userRoles.length > 0"
+            class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
             {{user.userRoles[0].role.role}}
-          </p>
+        </p>
 
-          <p *ngIf="!user.userRoles || user.userRoles.length == 0" class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-              Not specified
-            </p>
+        <p *ngIf="!user.userRoles || user.userRoles.length == 0"
+            class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+            Not specified
+        </p>
+
+        <p *ngIf="user.status "
+            class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+            Status: {{user.status}}
+        </p>
         <div class="flex mt-4 md:mt-6 gap-4">
-            <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Approve</a>
+            <button (click)="changeStatus('APPROVED')"
+                class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Approve</button>
 
-            <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Ban</a>
+            <button (click)="changeStatus('BANNED')"
+                class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Ban</button>
+        </div>
+    </div>
+
+
+    <div class="flex flex-col itesm-center p-4">
+
+        <div
+            (click)="deleteUser()"
+            class="mb-4 rounded-full bg-red-500 py-0.5 px-2.5 border border-transparent text-xs text-white transition-all shadow-sm w-20 text-center cursor-pointer hover:bg-red-600 focus:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
+            Delete
         </div>
     </div>
 </div>

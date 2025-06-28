@@ -4,6 +4,8 @@ import { MarketplaceComponent } from './pages/marketplace/marketplace.component'
 import { ProductListComponent } from './pages/product-list/product-list.component';
 import { CheckoutProductsComponent } from './pages/checkout-products/checkout-products.component';
 import { AuthGuard } from './auth.guard';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { NotificationsComponent } from './pages/notifications/notifications.component';
 
 export const routes: Routes = [
   {
@@ -50,4 +52,12 @@ export const routes: Routes = [
     path: 'product-list',
     component: ProductListComponent,
   },
+  {
+    path: 'user-profile/:id/:firstName',
+    component: UserProfileComponent
+  },
+    {
+    path: 'notifications', 
+    component: NotificationsComponent
+  }
 ];
