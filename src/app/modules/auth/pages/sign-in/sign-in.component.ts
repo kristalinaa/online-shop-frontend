@@ -38,7 +38,6 @@ export class SignInComponent {
         
       },
       error: (error) => {
-        //manage error if happens
         this.showError()
       }, 
       complete: () => {

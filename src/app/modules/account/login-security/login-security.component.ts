@@ -24,11 +24,11 @@ export class LoginSecurityComponent implements OnInit, OnDestroy {
   }
 
   async fetchData() {
-    this.subs = await this.accountSettingService
-      .getLoginSecurityInfo()
-      .subscribe((response: any) => {
-        this.loginSecurityInfo = response.body;
-      });
+    // this.subs = await this.accountSettingService
+    //   .getLoginSecurityInfo()
+    //   .subscribe((response: any) => {
+    //     this.loginSecurityInfo = response.body;
+    //   });
   }
 
   ngOnDestroy(): void {

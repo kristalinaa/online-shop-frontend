@@ -15,6 +15,10 @@ export const appConfig: ApplicationConfig = {
       positionClass: 'toast-bottom-center',
 
     }),
+     {
+      provide: 'WS_URL',
+      useValue: 'ws://localhost:3001',  // or your actual socket server URL
+    },
     provideHttpClient(withInterceptorsFromDi()), // Support DI-based interceptors
 
     {provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor, multi: true},

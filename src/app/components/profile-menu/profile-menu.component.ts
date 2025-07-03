@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { NgClass, NgIf } from '@angular/common';
+import { CommonModule, NgClass, NgIf } from '@angular/common';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { ClickOutsideDirective } from '../../directives/click-outside.directive';
 import { AuthService } from '../../services/auth.service';
+import { NotificationService } from '../../services/notification/notification.service';
+import { filter, Observable } from 'rxjs';
 
 
 @Component({
@@ -11,7 +13,7 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './profile-menu.component.html',
   styleUrls: ['./profile-menu.component.scss'],
   standalone: true,
-  imports: [ClickOutsideDirective, NgClass, NgIf,RouterLink, AngularSvgIconModule],
+  imports: [ClickOutsideDirective, NgClass, CommonModule, RouterLink, AngularSvgIconModule],
 })
 export class ProfileMenuComponent implements OnInit {
   public isMenuOpen = false;
@@ -20,17 +22,23 @@ export class ProfileMenuComponent implements OnInit {
   userDetails!: any;
   hasCreatedOtherEntity: boolean = false;
   defaultProfileIsTransporter: boolean = false;
+  unreadCount$!: Observable<number>;
 
   actualProfile: string | null = null;
-
   constructor(
     private authService: AuthService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private notificationSvc: NotificationService,
+  ) { 
+    this.unreadCount$ = this.notificationSvc.unreadCount$;
+
+  }
 
   ngOnInit(): void {
     this.userDetails = this.authService.loggedInUser();
-    
+    this.notificationSvc.stream$
+      .pipe(filter(Boolean))       // skip initial null
+      .subscribe(n => { console.log('New notification:', n); });
   }
 
   public toggleMenu(): void {
@@ -41,7 +49,7 @@ export class ProfileMenuComponent implements OnInit {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
-  isRole(role: string){
+  isRole(role: string) {
     return this.authService.isRole(role)
   }
 
@@ -49,7 +57,8 @@ export class ProfileMenuComponent implements OnInit {
     this.authService.signOutUser();
   }
 
-  goToNotifications(){
+  goToNotifications() {
+    this.notificationSvc.markAllRead();     // reset badge
     this.router.navigate(['/notifications']);
   }
 }

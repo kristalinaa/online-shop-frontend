@@ -24,24 +24,24 @@ import { CollectionComponent } from '../../components/collection/collection.comp
 export class HomeComponent implements OnInit, OnDestroy {
   ctaSection: any = {
     title:
-      'We are on a mission to embrace a culture of speaking up in organizations all over the world',
+      'Empowering buyers and sellers to connect, trade, and grow',
     selectedTitle: '',
     description: '',
     button: {
-      label: 'How it all started',
-      href: '#how-it-started',
+      label: 'Shop Now',
+      href: '/marketplace',
     },
     photo: 'assets/case-2.jpeg',
     photoPosition: 'right',
   };
 
   agent: any = {
-    label: 'thomas-agent',
-    firstName: 'Thomas',
+    label: 'kristalina-agent',
+    firstName: 'Kristalina',
     lastName: 'Agent',
     photo: '/assets/clients/f1.PNG',
     phoneNumber: '+1 843 303 3243',
-    email: 'thomas.agent@bondcom.co',
+    email: 'kristalina.agent@bondcom.co',
   };
 
   stats: any[] = [
