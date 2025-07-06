@@ -61,4 +61,9 @@ export class ProfileMenuComponent implements OnInit {
     this.notificationSvc.markAllRead();     // reset badge
     this.router.navigate(['/notifications']);
   }
+
+  gotToChatMessages() {
+    // this.notificationSvc.markAllRead();     // reset badge
+    this.router.navigate(['/chat']);
+  }
 }

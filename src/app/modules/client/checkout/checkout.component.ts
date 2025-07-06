@@ -146,7 +146,6 @@ export class CheckoutComponent implements OnInit {
 
   getCityPerCountry(){
     const country = this.formGroup?.getRawValue().country;
-    debugger
     if(!country) this.cities = []
     this.cities =  this.countryCity.find(it => it.country == country).city
     return this.cities;

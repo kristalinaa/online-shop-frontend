@@ -6,6 +6,7 @@ import { CheckoutProductsComponent } from './pages/checkout-products/checkout-pr
 import { AuthGuard } from './auth.guard';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
+import { ChatComponent } from './pages/chat/chat.component';
 
 export const routes: Routes = [
   {
@@ -56,8 +57,16 @@ export const routes: Routes = [
     path: 'user-profile/:id/:firstName',
     component: UserProfileComponent
   },
-    {
-    path: 'notifications', 
+  {
+    path: 'notifications',
     component: NotificationsComponent
+  },
+  {
+    path: 'chat',
+    component: ChatComponent
+  },
+  {
+    path: 'chat/:peerId',
+    component: ChatComponent
   }
 ];

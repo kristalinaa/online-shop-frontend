@@ -1,0 +1,71 @@
+<!-- chat.component.html -->
+<div class="flex h-screen overflow-hidden">
+    <!-- ========== SIDEBAR ========== -->
+    <aside class="w-72 bg-white border-r border-gray-200 flex flex-col">
+        <!-- Header -->
+        <header class="p-4 border-b border-gray-200 bg-indigo-600 text-white flex justify-between items-center">
+            <h2 class="text-xl font-semibold">Contact</h2>
+
+            <!-- ▼ menu -->
+            <div class="relative">
+                <button (click)="menuOpen = !menuOpen" class="focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                        <path d="M2 10a2 2 0 012-2h12a2 2 0 012 2 2 2 0 01-2 2H4a2 2 0 01-2-2z" />
+                    </svg>
+                </button>
+
+           
+            </div>
+        </header>
+
+        <!-- Contact list -->
+        <div class="flex-1 overflow-y-auto p-4 space-y-3">
+            <div *ngFor="let c of contacts" (click)="openChat(c)"
+                class="flex items-center p-2  gap-2 rounded cursor-pointer hover:bg-gray-100"
+                [class.bg-gray-100]="c.id === activeContact?.id">
+
+                <img src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"
+                    class="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500" />
+                <div class="flex-1">
+                    <h3 class="font-semibold">{{ c.peer.firstName }} {{c.peer.lastName}}</h3>
+                    <p>Unread: {{c.unread}}</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ========== CHAT AREA ========== -->
+    <section class="flex-1 flex flex-col">
+        <!-- Chat header -->
+        <header class="p-4 border-b border-gray-200 bg-white">
+            <h2 class="text-xl font-semibold">{{ activeContact?.firstName || 'Zgjidh kontakt' }}</h2>
+        </header>
+
+        <!-- Messages -->
+        <div class="flex-1 overflow-y-auto p-4 space-y-6 bg-gray-50">
+            <ng-container *ngFor="let m of messages">
+                <!-- incoming -->
+                <div *ngIf="!m.mine" class="flex items-start gap-2 max-w-prose">
+                    <!-- <img [src]="m.sender.avatarUrl" class="w-8 h-8 rounded-full" alt=""> -->
+                    <p class="bg-white p-3 rounded-lg shadow text-gray-800">{{ m.body }}</p>
+                </div>
+
+                <!-- outgoing -->
+                <div *ngIf="m.mine" class="flex justify-end items-start gap-2 max-w-prose self-end">
+                    <p class="bg-indigo-500 text-white p-3 rounded-lg shadow">{{ m.body }}</p>
+                    <!-- <img [src]="me.avatarUrl" class="w-8 h-8 rounded-full" alt=""> -->
+                </div>
+            </ng-container>
+        </div>
+
+        <!-- Input -->
+        <form  class="p-4 border-t border-gray-200 bg-white flex gap-2">
+            <input [(ngModel)]="draft" name="draft" autocomplete="off"
+                class="flex-1 p-2 border rounded focus:outline-none focus:ring focus:border-indigo-300"
+                placeholder="Shkruaj mesazhin…">
+            <button (click)="send()" class="bg-indigo-600 text-white px-4 py-2 rounded disabled:opacity-40" type="submit"
+                >Send</button>
+        </form>
+    </section>
+</div>

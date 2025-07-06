@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgClass, NgFor, NgIf } from '@angular/common';
 import { BagService } from '../../../services/bag/bag.service';
 import { FormsModule } from '@angular/forms';
+import { ConversationService } from '../../../services/conversations/conversation.service';
 
 @Component({
   selector: 'app-single-product',
@@ -24,7 +25,7 @@ export class SingleProductComponent implements OnInit{
   selectedQuantity: number = 0;
 
   errorMessage: string | null = null;
-  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private bagService: BagService, private router: Router){
+  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private bagService: BagService, private router: Router, private conversationService: ConversationService) {
     this.productId = this.activatedRoute.snapshot.params['id'];
 
   }
@@ -44,7 +45,6 @@ export class SingleProductComponent implements OnInit{
       next: (response) => {
         //succes
         this.product = response;
-        debugger
         this.quatityOptions = Array.from({ length: this.product.quantity }, (_, i) => i + 1);
         this.mainImageFileName = this.product.attachments[0].fileName;
         this.getAncestors(this.product.category.id)
@@ -74,7 +74,23 @@ export class SingleProductComponent implements OnInit{
     return 'http://localhost:3000/files/' + path
   }
 
+  async openChat(userId: number) {
 
+    await this.conversationService.getOrCreate({id: userId}).subscribe({
+      next: (response) => {
+        this.errorMessage = null;
+        // Navigate to the chat page with the conversation ID
+        this.router.navigate(['/chat', response.conversationId]);
+      },
+      error: (error) => {
+        this.errorMessage = error.error.message;
+      },
+      complete: () => {
+        // Optionally, you can handle any cleanup or final actions here
+      }
+    });
+    // this.router.navigate(['/chat', userId]);
+  }
 
   //
   async addToBag(){

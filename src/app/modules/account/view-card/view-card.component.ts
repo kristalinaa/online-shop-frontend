@@ -70,7 +70,6 @@ export class ViewCardComponent implements OnInit {
           next: (response) => {
             this.singleCardData = response;
             if (this.singleCardData) {
-              debugger;
               this.formGroup?.patchValue(this.singleCardData[0]);
               this.selectedCardType = this.singleCardData[0].type;
             }
